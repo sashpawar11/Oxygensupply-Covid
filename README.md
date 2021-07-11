@@ -17,7 +17,7 @@ This is a project developed in C# and ASP.NET
 Clone this repository on your local machine using this command, and import the project in Visual Studio.
 
 ```sh
-git clone https://github.com/sashpawar11/Oxygensupply-Covid.git
+$ git clone https://github.com/sashpawar11/Oxygensupply-Covid.git
 ```
 
 
