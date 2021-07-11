@@ -9,8 +9,9 @@ This is a project developed in C# and ASP.NET
 
 - Register as Hospital
 - Register as Oxygen Supplier/Dealer
-- Suppliers can update status of cylinders and location on Map
+- Suppliers can update status of cylinders and location on Map.
 - Hospitals can quickly search for suppliers and get their details.
+- Search Location of Oxygen Suppliers on Map
 
 ## Installation
 
