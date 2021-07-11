@@ -1,5 +1,5 @@
 # Oxygen Suppliers Database App 
-##### An easy and efficient method for hospitals to find oxygen cylinders quickly.
+##### An easy and efficient method for hospitals to find oxygen cylinders quickly espicially in the current pandemic situation.
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
