@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace CovidApp
 {
+   
     public partial class RegisterScreen : Form
     {
         public RegisterScreen()
@@ -44,6 +45,28 @@ namespace CovidApp
 
         private void button1_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            Reg_Hospital rh = new Reg_Hospital();
+            rh.Closed += (s, args) => this.Close();
+            rh.Show();
+            
+
+        }
+
+        private void regSupplierBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form1 ro = new Form1();
+            ro.Closed += (s, args) => this.Close();
+            ro.Show();
+        }
+
+        private void loginBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Login login = new Login();
+            login.Closed += (s, args) => this.Close();
+            login.Show();
 
         }
     }
