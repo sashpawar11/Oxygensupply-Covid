@@ -32,6 +32,7 @@
             this.username = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.registerBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.hosp_name = new System.Windows.Forms.TextBox();
@@ -41,10 +42,11 @@
             this.hosp_addr = new System.Windows.Forms.TextBox();
             this.inc_name = new System.Windows.Forms.TextBox();
             this.hospitalDetailbox = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.hospitalDetailbox.SuspendLayout();
             this.SuspendLayout();
@@ -86,6 +88,15 @@
             this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Account Details";
+            // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Location = new System.Drawing.Point(223, 126);
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.PasswordChar = '*';
+            this.maskedTextBox1.PromptChar = '-';
+            this.maskedTextBox1.Size = new System.Drawing.Size(239, 22);
+            this.maskedTextBox1.TabIndex = 20;
             // 
             // registerBtn
             // 
@@ -149,13 +160,15 @@
             // 
             // inc_name
             // 
-            this.inc_name.Location = new System.Drawing.Point(159, 320);
+            this.inc_name.Location = new System.Drawing.Point(157, 375);
             this.inc_name.Name = "inc_name";
             this.inc_name.Size = new System.Drawing.Size(239, 22);
             this.inc_name.TabIndex = 12;
             // 
             // hospitalDetailbox
             // 
+            this.hospitalDetailbox.Controls.Add(this.comboBox1);
+            this.hospitalDetailbox.Controls.Add(this.label8);
             this.hospitalDetailbox.Controls.Add(this.button1);
             this.hospitalDetailbox.Controls.Add(this.label6);
             this.hospitalDetailbox.Controls.Add(this.inc_name);
@@ -173,10 +186,19 @@
             this.hospitalDetailbox.TabStop = false;
             this.hospitalDetailbox.Text = "Oxygen Supplier Details";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(159, 437);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(239, 23);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "Locate";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(100, 400);
+            this.label6.Location = new System.Drawing.Point(100, 440);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(43, 17);
             this.label6.TabIndex = 13;
@@ -185,29 +207,65 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(31, 323);
+            this.label5.Location = new System.Drawing.Point(35, 378);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(116, 17);
             this.label5.TabIndex = 11;
             this.label5.Text = "Company Name :";
             // 
-            // maskedTextBox1
+            // label8
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(223, 126);
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.PasswordChar = '*';
-            this.maskedTextBox1.PromptChar = '-';
-            this.maskedTextBox1.Size = new System.Drawing.Size(239, 22);
-            this.maskedTextBox1.TabIndex = 20;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(94, 318);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(49, 17);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "State :";
             // 
-            // button1
+            // comboBox1
             // 
-            this.button1.Location = new System.Drawing.Point(159, 400);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(239, 23);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Locate";
-            this.button1.UseVisualStyleBackColor = true;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Andhra Pradesh",
+            "Arunachal Pradesh",
+            "Assam",
+            "Bihar",
+            "Chhattisgarh",
+            "Goa",
+            "Gujarat",
+            "Haryana",
+            "Himachal Pradesh",
+            "Jammu and Kashmir",
+            "Jharkhand",
+            "Karnataka",
+            "Kerala",
+            "Madhya Pradesh",
+            "Maharashtra",
+            "Manipur",
+            "Meghalaya",
+            "Mizoram",
+            "Nagaland",
+            "Odisha",
+            "Punjab",
+            "Rajasthan",
+            "Sikkim",
+            "Tamil Nadu",
+            "Telangana",
+            "Tripura",
+            "Uttarakhand",
+            "Uttar Pradesh",
+            "West Bengal",
+            "Andaman and Nicobar Islands",
+            "Chandigarh",
+            "Dadra and Nagar Haveli",
+            "Daman and Diu",
+            "Delhi",
+            "Lakshadweep",
+            "Puducherry"});
+            this.comboBox1.Location = new System.Drawing.Point(159, 318);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(239, 24);
+            this.comboBox1.TabIndex = 16;
             // 
             // Form1
             // 
@@ -247,5 +305,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label8;
     }
 }

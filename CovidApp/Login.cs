@@ -21,5 +21,13 @@ namespace CovidApp
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            HospitalView hv = new HospitalView();
+            hv.Closed += (s, args) => this.Close();
+            hv.Show();
+        }
     }
 }
