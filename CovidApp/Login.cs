@@ -35,7 +35,7 @@ namespace CovidApp
             OleDbConnection con = new OleDbConnection(" Provider=Microsoft.Jet.OLEDB.4.0; Data Source='D:\\Login.xlsx'; Extended Properties='Excel 8.0'; HDR=YES;';");
             con.Open();
             OleDbCommand cmd = new OleDbCommand();
-            String sql = "insert into table [sheet1$](Username , Password) values('+user+','+pass+')";
+            String sql = "insert into table [sheet1$](Username , Password) values('+user+','+pass+')";      //ucxasgcagcaucha
             cmd.Connection = con;
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
