@@ -1,4 +1,7 @@
-﻿using GMap.NET.MapProviders;
+﻿using GMap.NET;
+using GMap.NET.WindowsForms;
+using GMap.NET.WindowsForms.Markers;
+using GMap.NET.MapProviders;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,11 +32,24 @@ namespace CovidApp
             map.MinZoom = 5;
             map.MaxZoom = 100;
             map.Zoom = 10;
+            
             if (stateSelector.Text == "Goa")
             {
                 double lat = 15.2993;
                 double longt = 74.1240;
                 map.Position = new GMap.NET.PointLatLng(lat, longt);
+               
+                GMaps.Instance.Mode = AccessMode.ServerOnly;
+                map.SetPositionByKeywords("Panaji,India");
+                GMapOverlay markers = new GMapOverlay("markers");
+                GMapMarker marker = new GMarkerGoogle(
+                    new PointLatLng(lat, longt),
+                    GMap.NET.WindowsForms.Markers.GMarkerGoogleType.blue_pushpin                    
+                    );
+                markers.Markers.Add(marker);
+                map.Overlays.Add(markers);
+
+               
             }
         }
 

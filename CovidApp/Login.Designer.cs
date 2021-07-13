@@ -54,6 +54,7 @@
             this.hosp_name.Name = "hosp_name";
             this.hosp_name.Size = new System.Drawing.Size(239, 22);
             this.hosp_name.TabIndex = 8;
+            this.hosp_name.TextChanged += new System.EventHandler(this.hosp_name_TextChanged);
             // 
             // label2
             // 
