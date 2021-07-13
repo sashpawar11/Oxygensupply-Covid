@@ -6,7 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.OleDb;
 using System.Windows.Forms;
+
 
 namespace CovidApp          
 {
@@ -28,6 +30,17 @@ namespace CovidApp
             HospitalView hv = new HospitalView();
             hv.Closed += (s, args) => this.Close();
             hv.Show();
+            String user = hosp_name.Text;
+            String pass = maskedTextBox1.Text;
+            OleDbConnection con = new OleDbConnection(" Provider=Microsoft.Jet.OLEDB.4.0; Data Source='D:\\Login.xlsx'; Extended Properties='Excel 8.0'; HDR=YES;';");
+            con.Open();
+            OleDbCommand cmd = new OleDbCommand();
+            String sql = "insert into table [sheet1$](Username , Password) values('+user+','+pass+')";
+            cmd.Connection = con;
+            cmd.CommandText = sql;
+            cmd.ExecuteNonQuery();
+            con.Close();
         }
+        
     }
 }
