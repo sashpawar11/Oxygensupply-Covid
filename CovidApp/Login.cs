@@ -32,9 +32,8 @@ namespace CovidApp
             hv.Show();
             String user = hosp_name.Text;
             String pass = maskedTextBox1.Text;
-            string connstr = String.Format(@"Provider= Microsoft.ACE.OLEDB.12.0;Data Source=D:\\Login.xlsx;Extended Properties=""Excel 12.0 Xml;HDR=YES""");
-            OleDbConnection con = new OleDbConnection(connstr);
-
+            //string connstr = String.Format(@"Provider= Microsoft.ACE.OLEDB.12.0;Data Source=D:\\Login.xlsx;Extended Properties=""Excel 12.0 Xml;HDR=YES""");
+            //OleDbConnection con = new OleDbConnection(connstr);
             //con.ConnectionString = "Provider = Microsoft.Jet.OLEDB.4.0; Data Source = D:\\Login.xlsx" + @";Extended Properties=""Excel 12.0 Xml;HDR=YES""";
             //con.Open();
             //OleDbCommand cmd = new OleDbCommand();
@@ -46,12 +45,17 @@ namespace CovidApp
             //ConnectionToExcelFilebelow
             string connectionString = @"provider = Microsoft.ACE.OLEDB.12.0; 
                             Data source = D:\Login.xlsx; 
-                            Extended Properties = 'Excel 12.0'";
+                            Extended Properties = 'Excel 8.0'";
             OleDbConnection oleDbConnection = new OleDbConnection(connectionString);
             try
             {
                 oleDbConnection.Open();
-                MessageBox.Show("Connection Successful");
+                OleDbCommand cmd = new OleDbCommand();
+                string query = "INSERT INTO [Sheet1$] ([Username], [Password]) VALUES('" + hosp_name.Text + "','" + maskedTextBox1.Text + "')";
+                cmd.Connection = oleDbConnection;
+                cmd.CommandText = query;
+                cmd.ExecuteNonQuery();
+                oleDbConnection.Close();
             }
             catch (Exception)
             {
