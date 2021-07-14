@@ -24,7 +24,7 @@ namespace CovidApp
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             this.Hide();
             HospitalView hv = new HospitalView();
@@ -32,39 +32,30 @@ namespace CovidApp
             hv.Show();
             String user = hosp_name.Text;
             String pass = maskedTextBox1.Text;
-            //string connstr = String.Format(@"Provider= Microsoft.ACE.OLEDB.12.0;Data Source=D:\\Login.xlsx;Extended Properties=""Excel 12.0 Xml;HDR=YES""");
-            //OleDbConnection con = new OleDbConnection(connstr);
-            //con.ConnectionString = "Provider = Microsoft.Jet.OLEDB.4.0; Data Source = D:\\Login.xlsx" + @";Extended Properties=""Excel 12.0 Xml;HDR=YES""";
-            //con.Open();
-            //OleDbCommand cmd = new OleDbCommand();
-            //String sql = "INSERT INTO [sheet1$](Username,Password) values('+user+','+pass+')";      //ucxasg
-            //cmd.Connection = con;
-            //cmd.CommandText = sql;
-            //cmd.ExecuteNonQuery();
-
-            //ConnectionToExcelFilebelow
+           
             string connectionString = @"provider = Microsoft.ACE.OLEDB.12.0; 
                             Data source = D:\Login.xlsx; 
                             Extended Properties = 'Excel 8.0'";
             OleDbConnection oleDbConnection = new OleDbConnection(connectionString);
-            try
-            {
+            
                 oleDbConnection.Open();
-                OleDbCommand cmd = new OleDbCommand();
-                string query = "INSERT INTO [Sheet1$] ([Username], [Password]) VALUES('" + hosp_name.Text + "','" + maskedTextBox1.Text + "')";
+            OleDbCommand cmd = new OleDbCommand();
+                string query = "INSERT INTO [Sheet1$] ([Username], [Password]) VALUES('" + user + "','" + pass + "')";
                 cmd.Connection = oleDbConnection;
                 cmd.CommandText = query;
                 cmd.ExecuteNonQuery();
                 oleDbConnection.Close();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Connection failed");
-
-            }
+                
+            
+          
         }
 
-        private void hosp_name_TextChanged(object sender, EventArgs e)
+        private void Hosp_name_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Hospital_CheckedChanged(object sender, EventArgs e)
         {
 
         }
