@@ -21,5 +21,10 @@ namespace CovidApp
         {
 
         }
+
+        private void OxygenSupplierView_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

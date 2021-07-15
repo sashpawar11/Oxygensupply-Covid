@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.OleDb;
 
 namespace CovidApp
 {
@@ -28,6 +29,28 @@ namespace CovidApp
 
         private void button2_Click(object sender, EventArgs e)
         {
+
+            // Connection string for OleDB Connection to Excel File
+            string connectionString = @"provider = Microsoft.ACE.OLEDB.12.0;      
+                            Data source = D:\Oxygen supplier.xlsx; 
+                            Extended Properties = 'Excel 8.0'";
+            
+            OleDbConnection oleDbConnection = new OleDbConnection(connectionString);          // Reading Oxygen Suppliers Database From Excel File
+            DataTable SheetData = new DataTable();                // Creating DataTable for the DataGrid in Hospital View
+            oleDbConnection.Open(); 
+            OleDbCommand cmd = new OleDbCommand($"SELECT * From [Sheet1$]", oleDbConnection);         // Query to Fetch all data from Excel file
+            //string query = $"SELECT * From [Sheet1$] ";
+            //cmd.Connection = oleDbConnection;                               // Ignore this part (for reference)
+            //cmd.CommandText = query;
+            //cmd.ExecuteNonQuery();
+            ((OleDbDataAdapter)new OleDbDataAdapter(cmd)).Fill(SheetData);        // Filling the DataTable with all entries from Excel File (Oxygen Suppliers)
+            oleDbConnection.Close();
+            SuppliersDataGrid.DataSource = SheetData;      // Displaying all the data in the respective GridView in HospitalView
+
+
+
+
+            //   -------------- Map Section (Under Dev)-----
             map.MapProvider = GMapProviders.GoogleMap;
             map.MinZoom = 5;
             map.MaxZoom = 100;
@@ -39,8 +62,8 @@ namespace CovidApp
                 double longt = 74.1240;
                 map.Position = new GMap.NET.PointLatLng(lat, longt);
                
-                GMaps.Instance.Mode = AccessMode.ServerOnly;
-                map.SetPositionByKeywords("Panaji,India");
+                //GMaps.Instance.Mode = AccessMode.ServerOnly;
+               // map.SetPositionByKeywords("Panaji,India");
                 GMapOverlay markers = new GMapOverlay("markers");
                 GMapMarker marker = new GMarkerGoogle(
                     new PointLatLng(lat, longt),
@@ -56,6 +79,11 @@ namespace CovidApp
         private void map_Load(object sender, EventArgs e)
         {
             map.ShowCenter = false;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
         }
     }
 }

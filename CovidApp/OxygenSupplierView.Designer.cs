@@ -115,6 +115,7 @@ namespace CovidApp
             this.Controls.Add(this.label2);
             this.Name = "OxygenSupplierView";
             this.Text = "OxygenSupplierView";
+            this.Load += new System.EventHandler(this.OxygenSupplierView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

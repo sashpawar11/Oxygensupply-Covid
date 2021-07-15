@@ -34,17 +34,17 @@ namespace CovidApp
             this.searchBtn = new System.Windows.Forms.Button();
             this.stateSelector = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.SuppliersDataGrid = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SuppliersDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // splitter1
             // 
             this.splitter1.Location = new System.Drawing.Point(0, 0);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(582, 701);
+            this.splitter1.Size = new System.Drawing.Size(582, 687);
             this.splitter1.TabIndex = 0;
             this.splitter1.TabStop = false;
             // 
@@ -73,7 +73,7 @@ namespace CovidApp
             this.map.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.map.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.map.ShowTileGridLines = false;
-            this.map.Size = new System.Drawing.Size(559, 677);
+            this.map.Size = new System.Drawing.Size(559, 663);
             this.map.TabIndex = 1;
             this.map.Zoom = 0D;
             this.map.Load += new System.EventHandler(this.map_Load);
@@ -81,7 +81,7 @@ namespace CovidApp
             // searchBtn
             // 
             this.searchBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchBtn.Location = new System.Drawing.Point(1158, 34);
+            this.searchBtn.Location = new System.Drawing.Point(1169, 34);
             this.searchBtn.Name = "searchBtn";
             this.searchBtn.Size = new System.Drawing.Size(123, 23);
             this.searchBtn.TabIndex = 3;
@@ -130,7 +130,7 @@ namespace CovidApp
             "Delhi",
             "Lakshadweep",
             "Puducherry"});
-            this.stateSelector.Location = new System.Drawing.Point(899, 34);
+            this.stateSelector.Location = new System.Drawing.Point(910, 34);
             this.stateSelector.Name = "stateSelector";
             this.stateSelector.Size = new System.Drawing.Size(239, 24);
             this.stateSelector.TabIndex = 17;
@@ -138,33 +138,35 @@ namespace CovidApp
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.dataGridView1);
-            this.groupBox1.Location = new System.Drawing.Point(602, 80);
+            this.groupBox1.Controls.Add(this.SuppliersDataGrid);
+            this.groupBox1.Location = new System.Drawing.Point(613, 80);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(714, 609);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Oxygen Cylinder Suppliers";
             // 
-            // dataGridView1
+            // SuppliersDataGrid
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 34);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(702, 569);
-            this.dataGridView1.TabIndex = 0;
+            this.SuppliersDataGrid.AllowUserToAddRows = false;
+            this.SuppliersDataGrid.AllowUserToDeleteRows = false;
+            this.SuppliersDataGrid.AllowUserToOrderColumns = true;
+            this.SuppliersDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SuppliersDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.SuppliersDataGrid.Location = new System.Drawing.Point(0, 34);
+            this.SuppliersDataGrid.Name = "SuppliersDataGrid";
+            this.SuppliersDataGrid.ReadOnly = true;
+            this.SuppliersDataGrid.RowHeadersWidth = 51;
+            this.SuppliersDataGrid.RowTemplate.Height = 24;
+            this.SuppliersDataGrid.Size = new System.Drawing.Size(708, 569);
+            this.SuppliersDataGrid.TabIndex = 0;
+            this.SuppliersDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(809, 37);
+            this.label1.Location = new System.Drawing.Point(820, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(84, 17);
             this.label1.TabIndex = 19;
@@ -174,7 +176,7 @@ namespace CovidApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1328, 701);
+            this.ClientSize = new System.Drawing.Size(1339, 687);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.stateSelector);
@@ -185,7 +187,7 @@ namespace CovidApp
             this.Text = "HospitalView";
             this.Load += new System.EventHandler(this.HospitalView_Load);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SuppliersDataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -198,7 +200,7 @@ namespace CovidApp
         private System.Windows.Forms.Button searchBtn;
         private System.Windows.Forms.ComboBox stateSelector;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView SuppliersDataGrid;
         private System.Windows.Forms.Label label1;
     }
 }
