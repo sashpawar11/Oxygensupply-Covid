@@ -60,7 +60,8 @@ namespace CovidApp
             map.MinZoom = 5;
             map.MaxZoom = 100;
             map.Zoom = 10;
-            
+            RefreshMap();
+
             if (selectedState== "Goa")
             {
                 double lat = 15.2993;
@@ -76,6 +77,7 @@ namespace CovidApp
                     );
                 markers.Markers.Add(marker);
                 map.Overlays.Add(markers);
+                RefreshMap();
 
                
             }
@@ -84,6 +86,10 @@ namespace CovidApp
         private void map_Load(object sender, EventArgs e)
         {
             map.ShowCenter = false;
+            map.DragButton = MouseButtons.Left;
+            RefreshMap();
+
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -94,6 +100,12 @@ namespace CovidApp
         private void stateSelector_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        public void RefreshMap()
+        {
+            map.Zoom--;
+            map.Zoom++;
         }
 
 
