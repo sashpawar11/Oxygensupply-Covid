@@ -38,7 +38,7 @@ namespace CovidApp
             OleDbConnection oleDbConnection = new OleDbConnection(connectionString);          // Reading Oxygen Suppliers Database From Excel File
             DataTable SheetData = new DataTable();                // Creating DataTable for the DataGrid in Hospital View
             oleDbConnection.Open(); 
-            OleDbCommand cmd = new OleDbCommand($"SELECT * From [Sheet1$]", oleDbConnection);         // Query to Fetch all data from Excel file
+            OleDbCommand cmd = new OleDbCommand($"SELECT [Name], [Contact Number], [Address], [State], [Company Name] from [Sheet1$]", oleDbConnection);         // Query to Fetch all data from Excel file
             //string query = $"SELECT * From [Sheet1$] ";
             //cmd.Connection = oleDbConnection;                               // Ignore this part (for reference)
             //cmd.CommandText = query;
