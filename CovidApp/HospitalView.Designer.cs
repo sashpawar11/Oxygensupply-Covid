@@ -134,6 +134,7 @@ namespace CovidApp
             this.stateSelector.Name = "stateSelector";
             this.stateSelector.Size = new System.Drawing.Size(239, 24);
             this.stateSelector.TabIndex = 17;
+            this.stateSelector.SelectedIndexChanged += new System.EventHandler(this.stateSelector_SelectedIndexChanged);
             // 
             // groupBox1
             // 

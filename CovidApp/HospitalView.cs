@@ -39,8 +39,12 @@ namespace CovidApp
             DataTable SheetData = new DataTable();                // Creating DataTable for the DataGrid in Hospital View
             oleDbConnection.Open(); 
             OleDbCommand cmd = new OleDbCommand();
-            /// Query to Fetch all data from Excel file
-            string query = $"SELECT [Name], [Contact Number], [Address], [State], [Company Name] from [Sheet1$]";
+
+            var selectedState = stateSelector.Text;
+
+            
+            /// Query to search Data and Fetch according to the State Selected.
+            string query = $"SELECT [Name], [Contact Number], [Address], [State], [Company Name] from [Sheet1$] WHERE  [State] = '" + selectedState + "'";
             cmd.Connection = oleDbConnection;                               
             cmd.CommandText = query;
             cmd.ExecuteNonQuery();
@@ -57,7 +61,7 @@ namespace CovidApp
             map.MaxZoom = 100;
             map.Zoom = 10;
             
-            if (stateSelector.Text == "Goa")
+            if (selectedState== "Goa")
             {
                 double lat = 15.2993;
                 double longt = 74.1240;
@@ -86,5 +90,12 @@ namespace CovidApp
         {
            
         }
+
+        private void stateSelector_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }
