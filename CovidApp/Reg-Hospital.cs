@@ -43,7 +43,7 @@ namespace CovidApp
             String inchargeno = inc_no.Text;
 
             string connectionString = @"provider = Microsoft.ACE.OLEDB.12.0; 
-                            Data source = D:\Hospital data.xlsx; 
+                            Data source = D:\HospitalDatabase.xlsx; 
                             Extended Properties = 'Excel 8.0'";
             OleDbConnection oleDbConnection = new OleDbConnection(connectionString);
 
@@ -54,6 +54,11 @@ namespace CovidApp
             cmd.CommandText = query;
             cmd.ExecuteNonQuery();
             oleDbConnection.Close();
+        }
+
+        private void Reg_Hospital_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

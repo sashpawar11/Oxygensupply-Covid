@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Data.OleDb;
 using System.Windows.Forms;
 
+
 namespace CovidApp
 {
     public partial class Form1 : Form
@@ -30,15 +31,15 @@ namespace CovidApp
             login.Closed += (s, args) => this.Close();
             login.Show();
             String user1 = username.Text;
-            String pass1 = maskedTextBox1.Text;
+            String pass1 = password.Text;
             String oxyname = hosp_name.Text;
             String oxynum = hosp_no.Text;
             String add = hosp_addr.Text;
-            string state = comboBox1.SelectedItem.ToString();
+            String state = comboBox1.SelectedItem.ToString();
             String comname = inc_name.Text;
 
             string connectionString = @"provider = Microsoft.ACE.OLEDB.12.0; 
-                            Data source = D:\Oxygen supplier.xlsx; 
+                            Data source = D:\SuppliersDatabase.xlsx; 
                             Extended Properties = 'Excel 8.0'";
             OleDbConnection oleDbConnection = new OleDbConnection(connectionString);
 
@@ -49,6 +50,21 @@ namespace CovidApp
             cmd.CommandText = query;
             cmd.ExecuteNonQuery();
             oleDbConnection.Close();
+        }
+
+        private void hospitalDetailbox_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

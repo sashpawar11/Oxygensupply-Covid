@@ -32,7 +32,7 @@ namespace CovidApp
 
             // Connection string for OleDB Connection to Excel File
             string connectionString = @"provider = Microsoft.ACE.OLEDB.12.0;      
-                            Data source = D:\Oxygen supplier.xlsx; 
+                            Data source = D:\SuppliersDatabase.xlsx; 
                             Extended Properties = 'Excel 8.0'";
             
             OleDbConnection oleDbConnection = new OleDbConnection(connectionString);          // Reading Oxygen Suppliers Database From Excel File
@@ -44,7 +44,7 @@ namespace CovidApp
 
             
             /// Query to search Data and Fetch according to the State Selected.
-            string query = $"SELECT [Name], [Contact Number], [Address], [State], [Company Name] from [Sheet1$] WHERE  [State] = '" + selectedState + "'";
+            string query = $"SELECT [Name], [Contact Number], [Address], [State], [Company Name], [Price], [Stock] , [Status] from [Sheet1$] WHERE  [State] = '" + selectedState + "'";
             cmd.Connection = oleDbConnection;                               
             cmd.CommandText = query;
             cmd.ExecuteNonQuery();

@@ -13,6 +13,7 @@ namespace CovidApp
 {
     public partial class OxygenSupplierView : Form
     {
+       
         public OxygenSupplierView()
         {
             InitializeComponent();
@@ -25,27 +26,65 @@ namespace CovidApp
 
         private void OxygenSupplierView_Load(object sender, EventArgs e)
         {
-
+            loadData();
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            String user = Login.usernameForQuery;  // Gets username which was used to login by the user from the Login Form
             String price = oxy_price.Text;
             String stock = oxy_stock.Text;
-            String status = comboBox1.SelectedItem.ToString();
+            String status = comboBox1.Text;
+
 
             string connectionString = @"provider = Microsoft.ACE.OLEDB.12.0; 
-                            Data source = D:\Oxygen supplier.xlsx; 
+                            Data source = D:\SuppliersDatabase.xlsx; 
                             Extended Properties = 'Excel 8.0'";
             OleDbConnection oleDbConnection = new OleDbConnection(connectionString);
 
             oleDbConnection.Open();
             OleDbCommand cmd = new OleDbCommand();
-            string query = "INSERT INTO [Sheet1$] ([Price], [Stock], [Status]) VALUES('" + price + "','" + stock + "','" + status + "')";
+            string query = "UPDATE [Sheet1$] SET [Price] = '" + price + "', [Stock] = '" + stock + "', [Status] = '" + status + "' WHERE [Username] = '" + user + "' ";
             cmd.Connection = oleDbConnection;
             cmd.CommandText = query;
             cmd.ExecuteNonQuery();
+            loadData();
             oleDbConnection.Close();
+             
+
+            
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+
+        // Function To Refresh DataGrid To Display Details On Updating.
+        public void loadData()
+        {
+            String user = Login.usernameForQuery;
+            string connectionString = @"provider = Microsoft.ACE.OLEDB.12.0; 
+                            Data source = D:\SuppliersDatabase.xlsx; 
+                            Extended Properties = 'Excel 8.0'";
+            OleDbConnection oleDbConnection = new OleDbConnection(connectionString);
+            DataTable SheetData = new DataTable();                
+            oleDbConnection.Open();
+            OleDbCommand cmd = new OleDbCommand();
+            string query = $"SELECT * from [Sheet1$]  WHERE [Username] = '" + user + "'";
+            cmd.Connection = oleDbConnection;
+            cmd.CommandText = query;
+            cmd.ExecuteNonQuery();
+            ((OleDbDataAdapter)new OleDbDataAdapter(cmd)).Fill(SheetData);        // Filling the DataTable with all entries from Excel File (Oxygen Suppliers)
+            oleDbConnection.Close();
+            personalDetailsView.DataSource = SheetData;
         }
     }
 }

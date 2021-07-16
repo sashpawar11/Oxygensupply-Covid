@@ -8,12 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.OleDb;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 
 namespace CovidApp          
 {
+
+    
     public partial class Login : Form
     {
+
+        public static string usernameForQuery = "";     // Storing username entered by User for further queries in other Forms.
         public Login()
         {
             InitializeComponent();
@@ -26,25 +31,72 @@ namespace CovidApp
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            HospitalView hv = new HospitalView();
-            hv.Closed += (s, args) => this.Close();
-            hv.Show();
-            String user = hosp_name.Text;
-            String pass = maskedTextBox1.Text;
-           
-            string connectionString = @"provider = Microsoft.ACE.OLEDB.12.0; 
-                            Data source = D:\Login.xlsx; 
-                            Extended Properties = 'Excel 8.0'";
-            OleDbConnection oleDbConnection = new OleDbConnection(connectionString);
             
+            String user = hosp_name.Text;
+            String pass = password.Text;
+            usernameForQuery = user;
+
+            if(hosp_box.Checked)
+            {
+                string connectionString = @"provider = Microsoft.ACE.OLEDB.12.0; 
+                            Data source = D:\HospitalDatabase.xlsx; 
+                            Extended Properties = 'Excel 8.0'";
+                OleDbConnection oleDbConnection = new OleDbConnection(connectionString);
+                
                 oleDbConnection.Open();
-            OleDbCommand cmd = new OleDbCommand();
-                string query = "INSERT INTO [Sheet1$] ([Username], [Password]) VALUES('" + user + "','" + pass + "')";
-                cmd.Connection = oleDbConnection;
-                cmd.CommandText = query;
-                cmd.ExecuteNonQuery();
+                OleDbDataAdapter oda = new OleDbDataAdapter("SELECT COUNT(*) FROM [Sheet1$] WHERE [Username] = '" + user + "' AND [Password] = '" + pass + "'", connectionString);
+                DataTable dt = new DataTable(); 
+                oda.Fill(dt);
+                if (dt.Rows[0][0].ToString() == "1")
+                {
+                  
+                    this.Hide();
+                    HospitalView hv = new HospitalView();
+                    hv.Closed += (s, args) => this.Close();
+                    hv.Show();
+                }
+                else { 
+                    MessageBox.Show("Invalid username or password");
+                  }
+
                 oleDbConnection.Close();
+                
+
+            }
+            else if(supp_box.Checked)
+            {
+                string connectionString = @"provider = Microsoft.ACE.OLEDB.12.0; 
+                            Data source = D:\SuppliersDatabase.xlsx; 
+                            Extended Properties = 'Excel 8.0'";
+                OleDbConnection oleDbConnection = new OleDbConnection(connectionString);
+                OleDbDataAdapter oda = new OleDbDataAdapter("SELECT COUNT(*) FROM [Sheet1$] WHERE [Username] = '" + user + "' AND [Password] = '" + pass + "'", connectionString);
+                DataTable dt = new DataTable(); 
+                oda.Fill(dt);
+     
+                oleDbConnection.Close();
+                if (dt.Rows[0][0].ToString() == "1")
+                { 
+                    
+                    this.Hide();
+                    OxygenSupplierView ov = new OxygenSupplierView();
+                    ov.Closed += (s, args) => this.Close();
+                    ov.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid username or password");
+                }
+                oleDbConnection.Close();
+
+            }
+            else
+            {
+                
+                MessageBox.Show("Invalid Username and Password , Login Failed!");
+
+            }
+
+           
                 
             
           
@@ -56,6 +108,16 @@ namespace CovidApp
         }
 
         private void Hospital_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
 
         }
