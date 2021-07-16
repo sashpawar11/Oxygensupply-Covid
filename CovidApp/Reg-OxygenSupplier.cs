@@ -66,5 +66,13 @@ namespace CovidApp
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+            
+            locationSelector loc = new locationSelector();
+            loc.Show();
+        }
     }
 }

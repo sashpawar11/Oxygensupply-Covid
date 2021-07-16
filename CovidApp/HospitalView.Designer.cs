@@ -47,6 +47,7 @@ namespace CovidApp
             this.splitter1.Size = new System.Drawing.Size(582, 687);
             this.splitter1.TabIndex = 0;
             this.splitter1.TabStop = false;
+            this.splitter1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitter1_SplitterMoved);
             // 
             // map
             // 

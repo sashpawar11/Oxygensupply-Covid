@@ -20,11 +20,24 @@ namespace CovidApp
         public HospitalView()
         {
             InitializeComponent();
+            
         }
 
+        public static double default_lat = 20.5937;
+        public static double default_longt = 78.9629;
         private void HospitalView_Load(object sender, EventArgs e)
         {
-            GMapProviders.GoogleMap.ApiKey = @"'AIzaSyCqQU_079Ch8SYiLbC4Eql3D6SOKM_b7ic";
+            //GMapProviders.GoogleMap.ApiKey = @"'AIzaSyCqQU_079Ch8SYiLbC4Eql3D6SOKM_b7ic";
+            GMapProviders.GoogleMap.ApiKey = "AIzaSyC2VXa8OMhRU4ivt7CAIErwB2cJDYS2s2g";
+            GMaps.Instance.Mode = AccessMode.ServerAndCache;
+            map.MapProvider = GMapProviders.GoogleMap;
+            map.MinZoom = 1;
+            map.MaxZoom = 50;
+            map.Zoom = 3;
+            map.ShowCenter = false;
+            map.DragButton = MouseButtons.Left;
+            map.Position = new GMap.NET.PointLatLng(default_lat, default_longt);
+            RefreshMap();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -56,27 +69,29 @@ namespace CovidApp
 
             
             //   -------------- Map Section (Under Dev)-----
-            map.MapProvider = GMapProviders.GoogleMap;
-            map.MinZoom = 5;
-            map.MaxZoom = 100;
-            map.Zoom = 10;
+            
             RefreshMap();
 
             if (selectedState== "Goa")
             {
+                map.Zoom = 10;
                 double lat = 15.2993;
                 double longt = 74.1240;
                 map.Position = new GMap.NET.PointLatLng(lat, longt);
-               
-                //GMaps.Instance.Mode = AccessMode.ServerOnly;
-               // map.SetPositionByKeywords("Panaji,India");
+                //map.SetPositionByKeywords("Chennai,India")
                 GMapOverlay markers = new GMapOverlay("markers");
                 GMapMarker marker = new GMarkerGoogle(
                     new PointLatLng(lat, longt),
-                    GMap.NET.WindowsForms.Markers.GMarkerGoogleType.pink_dot
+                    GMarkerGoogleType.pink_dot
                     ) ;
+
+               
                 markers.Markers.Add(marker);
                 map.Overlays.Add(markers);
+                marker.ToolTipText = "Goa Test Text";
+                marker.ToolTip.Fill = new SolidBrush(Color.FromArgb(100, Color.Black));
+                marker.ToolTip.Foreground = Brushes.White;
+                marker.ToolTip.TextPadding = new Size(20, 20);
                 RefreshMap();
 
                
@@ -85,8 +100,7 @@ namespace CovidApp
 
         private void map_Load(object sender, EventArgs e)
         {
-            map.ShowCenter = false;
-            map.DragButton = MouseButtons.Left;
+            
             RefreshMap();
 
 
@@ -109,6 +123,21 @@ namespace CovidApp
             map.Zoom++;
         }
 
+        private void splitter1_SplitterMoved(object sender, SplitterEventArgs e)
+        {
 
+        }
+
+        // public void addMarker(GMapControl _control, String location)
+        //{
+        //    _control.SetPositionByKeywords(location);
+        //       GMap.NET.PointLatLng pt1 = _control.Position;
+        //       GMapMarker marker1 = new GMapMarker(pt1);
+        //       marker1.Shape = new MarkerTemplate();
+        //       marker1.ZIndex = 1;
+        //       _control.Markers.Add(marker1);
+
+        //       Console.WriteLine("Should be added");
+        //}
     }
 }

@@ -85,6 +85,12 @@
     <Compile Include="HospitalView.Designer.cs">
       <DependentUpon>HospitalView.cs</DependentUpon>
     </Compile>
+    <Compile Include="locationSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="locationSelector.Designer.cs">
+      <DependentUpon>locationSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,9 @@
     </Compile>
     <EmbeddedResource Include="HospitalView.resx">
       <DependentUpon>HospitalView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="locationSelector.resx">
+      <DependentUpon>locationSelector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
