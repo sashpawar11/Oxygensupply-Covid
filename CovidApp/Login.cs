@@ -55,9 +55,9 @@ namespace CovidApp
                     hv.Closed += (s, args) => this.Close();
                     hv.Show();
                 }
-                else { 
-                    MessageBox.Show("Invalid username or password");
-                  }
+                else {
+                    MessageBox.Show("Invalid Username or Password. Please Retry!", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
 
                 oleDbConnection.Close();
                 
@@ -84,15 +84,15 @@ namespace CovidApp
                 }
                 else
                 {
-                    MessageBox.Show("Invalid username or password");
+                    MessageBox.Show("Invalid Username or Password. Please Retry!", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 oleDbConnection.Close();
 
             }
             else
             {
-                
-                MessageBox.Show("Invalid Username and Password , Login Failed!");
+
+                MessageBox.Show("Invalid Username or Password. Please Retry!", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
             }
 
