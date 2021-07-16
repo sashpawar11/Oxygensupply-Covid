@@ -54,7 +54,7 @@ namespace CovidApp
 
 
 
-
+            
             //   -------------- Map Section (Under Dev)-----
             map.MapProvider = GMapProviders.GoogleMap;
             map.MinZoom = 5;
@@ -73,8 +73,8 @@ namespace CovidApp
                 GMapOverlay markers = new GMapOverlay("markers");
                 GMapMarker marker = new GMarkerGoogle(
                     new PointLatLng(lat, longt),
-                    GMap.NET.WindowsForms.Markers.GMarkerGoogleType.blue_pushpin                    
-                    );
+                    GMap.NET.WindowsForms.Markers.GMarkerGoogleType.pink_dot
+                    ) ;
                 markers.Markers.Add(marker);
                 map.Overlays.Add(markers);
                 RefreshMap();
@@ -102,6 +102,7 @@ namespace CovidApp
 
         }
 
+        // Function to Auto-Refresh GMap
         public void RefreshMap()
         {
             map.Zoom--;

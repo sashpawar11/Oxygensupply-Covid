@@ -106,7 +106,7 @@
             // 
             this.hosp_box.AutoSize = true;
             this.hosp_box.Location = new System.Drawing.Point(117, 279);
-            this.hosp_box.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.hosp_box.Margin = new System.Windows.Forms.Padding(4);
             this.hosp_box.Name = "hosp_box";
             this.hosp_box.Size = new System.Drawing.Size(81, 21);
             this.hosp_box.TabIndex = 13;
@@ -118,7 +118,7 @@
             // 
             this.supp_box.AutoSize = true;
             this.supp_box.Location = new System.Drawing.Point(281, 279);
-            this.supp_box.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.supp_box.Margin = new System.Windows.Forms.Padding(4);
             this.supp_box.Name = "supp_box";
             this.supp_box.Size = new System.Drawing.Size(82, 21);
             this.supp_box.TabIndex = 14;
@@ -138,6 +138,7 @@
             this.Controls.Add(this.hosp_name);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Login";
             this.Text = "Login";

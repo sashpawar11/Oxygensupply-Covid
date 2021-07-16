@@ -58,6 +58,7 @@ namespace CovidApp
             
         }
 
+        // Function to Validate TextFields Before Updating
         private bool isValid()
         {
             if(oxy_price.Text == string.Empty)
@@ -98,7 +99,7 @@ namespace CovidApp
             DataTable SheetData = new DataTable();                
             oleDbConnection.Open();
             OleDbCommand cmd = new OleDbCommand();
-            string query = $"SELECT * from [Sheet1$]  WHERE [Username] = '" + user + "'";
+            string query = $"SELECT [Name], [Contact Number], [Address], [State], [Company Name], [Price], [Stock], [Status] from [Sheet1$]  WHERE [Username] = '" + user + "'";
             cmd.Connection = oleDbConnection;
             cmd.CommandText = query;
             cmd.ExecuteNonQuery();
