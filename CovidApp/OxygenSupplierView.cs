@@ -19,6 +19,10 @@ namespace CovidApp
             InitializeComponent();
         }
 
+        string connectionString = @"provider = Microsoft.ACE.OLEDB.12.0; 
+                            Data source = D:\SuppliersDatabase.xlsx; 
+                            Extended Properties = 'Excel 8.0'";
+        
         private void label2_Click(object sender, EventArgs e)
         {
 
@@ -38,22 +42,41 @@ namespace CovidApp
             String status = comboBox1.Text;
 
 
-            string connectionString = @"provider = Microsoft.ACE.OLEDB.12.0; 
-                            Data source = D:\SuppliersDatabase.xlsx; 
-                            Extended Properties = 'Excel 8.0'";
-            OleDbConnection oleDbConnection = new OleDbConnection(connectionString);
+            if (isValid())
+            {
+                OleDbConnection oleDbConnection = new OleDbConnection(connectionString);
+                oleDbConnection.Open();
+                OleDbCommand cmd = new OleDbCommand();
+                string query = "UPDATE [Sheet1$] SET [Price] = '" + price + "', [Stock] = '" + stock + "', [Status] = '" + status + "' WHERE [Username] = '" + user + "' ";
+                cmd.Connection = oleDbConnection;
+                cmd.CommandText = query;
+                cmd.ExecuteNonQuery();
+                loadData();
+                oleDbConnection.Close();
 
-            oleDbConnection.Open();
-            OleDbCommand cmd = new OleDbCommand();
-            string query = "UPDATE [Sheet1$] SET [Price] = '" + price + "', [Stock] = '" + stock + "', [Status] = '" + status + "' WHERE [Username] = '" + user + "' ";
-            cmd.Connection = oleDbConnection;
-            cmd.CommandText = query;
-            cmd.ExecuteNonQuery();
-            loadData();
-            oleDbConnection.Close();
-             
-
+            }
             
+        }
+
+        private bool isValid()
+        {
+            if(oxy_price.Text == string.Empty)
+            {
+                MessageBox.Show("Price Value is Required", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else if(oxy_stock.Text == string.Empty)
+            {
+                MessageBox.Show("Current Stock is Required", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+
+            }
+            else if(comboBox1.Text == string.Empty)
+            {
+                MessageBox.Show("Please Select Status (Required)*", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -71,9 +94,6 @@ namespace CovidApp
         public void loadData()
         {
             String user = Login.usernameForQuery;
-            string connectionString = @"provider = Microsoft.ACE.OLEDB.12.0; 
-                            Data source = D:\SuppliersDatabase.xlsx; 
-                            Extended Properties = 'Excel 8.0'";
             OleDbConnection oleDbConnection = new OleDbConnection(connectionString);
             DataTable SheetData = new DataTable();                
             oleDbConnection.Open();
