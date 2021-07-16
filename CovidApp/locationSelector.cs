@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.OleDb;
 
 namespace CovidApp
 {
@@ -23,6 +24,10 @@ namespace CovidApp
             InitializeComponent();
         }
 
+        // Variables for storing lat and long for passing in SuppliersRegistration Form
+        public static string latitude;
+        public static string longitude;
+
         private void locationSelector_Load(object sender, EventArgs e)
         {
             GMapProviders.GoogleMap.ApiKey = "AIzaSyC2VXa8OMhRU4ivt7CAIErwB2cJDYS2s2g";
@@ -30,7 +35,7 @@ namespace CovidApp
             locatormap.MapProvider = GMapProviders.GoogleMap;
             locatormap.MinZoom = 1;
             locatormap.MaxZoom = 50;
-            locatormap.Zoom = 3;
+            locatormap.Zoom = 5;
             locatormap.ShowCenter = false;
             locatormap.DragButton = MouseButtons.Left;
             locatormap.Position = new GMap.NET.PointLatLng(HospitalView.default_lat,HospitalView.default_longt);
@@ -47,12 +52,7 @@ namespace CovidApp
         {
 
         }
-        public void RefreshMap()
-        {
-            locatormap.Zoom--;
-            locatormap.Zoom++;
 
-        }
 
         private void locatormap_MouseClick(object sender, MouseEventArgs e)
         {
@@ -65,8 +65,7 @@ namespace CovidApp
                 latBox.Text = lat.ToString();
                 longBox.Text = longt.ToString();
 
-                locatormap.Position = point;
-
+                
                 LoadMap(point);
 
                 AddMarker(point);
@@ -81,11 +80,68 @@ namespace CovidApp
         
         private void AddMarker(PointLatLng pointToAdd, GMarkerGoogleType markerType = GMarkerGoogleType.purple_dot)
         {
-
+            
             var markers = new GMapOverlay("markers");
             var marker = new GMarkerGoogle(pointToAdd, GMarkerGoogleType.purple_dot);
             markers.Markers.Add(marker);
             locatormap.Overlays.Add(markers);
+
+
+        }
+
+
+        private void latBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private bool isValid()
+        {
+            if (latBox.Text == string.Empty)
+            {
+                MessageBox.Show("No Latitude Entered. Please Re-mark your location!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else if (longBox.Text == string.Empty)
+            {
+                MessageBox.Show("No Longitude Entered. Please Re-mark your location!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+
+            }
+            return true;
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            
+            locatormap.Overlays.Clear();
+            RefreshMap();
+            latBox.Text = "";
+            longBox.Text = "";
+            RefreshMap();
+        }
+
+        public void RefreshMap()
+        {
+            locatormap.Zoom--;
+            locatormap.Zoom++;
+
+        }
+
+        private void saveBtn_Click_1(object sender, EventArgs e)
+        {
+            if (isValid())
+            {
+                latitude = latBox.Text;
+                longitude = longBox.Text;
+                MessageBox.Show("Location Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            this.Close();
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
 
         }
     }

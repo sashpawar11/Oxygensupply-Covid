@@ -107,5 +107,11 @@ namespace CovidApp
             oleDbConnection.Close();
             personalDetailsView.DataSource = SheetData;
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            locationSelector loc = new locationSelector();
+            loc.Show();
+        }
     }
 }

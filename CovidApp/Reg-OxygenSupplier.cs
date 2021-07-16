@@ -37,6 +37,8 @@ namespace CovidApp
             String add = hosp_addr.Text;
             String state = comboBox1.SelectedItem.ToString();
             String comname = inc_name.Text;
+            String lat = locationSelector.latitude;
+            String lng = locationSelector.longitude;
 
             string connectionString = @"provider = Microsoft.ACE.OLEDB.12.0; 
                             Data source = D:\SuppliersDatabase.xlsx; 
@@ -45,7 +47,7 @@ namespace CovidApp
 
             oleDbConnection.Open();
             OleDbCommand cmd = new OleDbCommand();
-            string query = "INSERT INTO [Sheet1$] ([Username], [Password], [Name], [Contact Number], [Address], [State], [Company Name]) VALUES('" + user1 + "','" + pass1 + "','" + oxyname + "','" + oxynum + "','" + add + "','" + state + "','" + comname + "')";
+            string query = "INSERT INTO [Sheet1$] ([Username], [Password], [Name], [Contact Number], [Address], [State], [Company Name], [Lat] , [Lng] ) VALUES('" + user1 + "','" + pass1 + "','" + oxyname + "','" + oxynum + "','" + add + "','" + state + "','" + comname + "','" + lat + "', '" + lng + "')";
             cmd.Connection = oleDbConnection;
             cmd.CommandText = query;
             cmd.ExecuteNonQuery();
@@ -72,7 +74,7 @@ namespace CovidApp
             
             
             locationSelector loc = new locationSelector();
-            loc.Show();
+            loc.ShowDialog();
         }
     }
 }

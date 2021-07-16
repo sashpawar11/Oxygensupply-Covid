@@ -135,7 +135,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(35, 142);
+            this.label3.Location = new System.Drawing.Point(26, 142);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(118, 17);
             this.label3.TabIndex = 7;
@@ -152,7 +152,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(75, 230);
+            this.label4.Location = new System.Drawing.Point(76, 223);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(68, 17);
             this.label4.TabIndex = 9;
@@ -160,7 +160,7 @@
             // 
             // hosp_addr
             // 
-            this.hosp_addr.Location = new System.Drawing.Point(159, 212);
+            this.hosp_addr.Location = new System.Drawing.Point(159, 204);
             this.hosp_addr.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.hosp_addr.Multiline = true;
             this.hosp_addr.Name = "hosp_addr";
@@ -169,7 +169,7 @@
             // 
             // inc_name
             // 
-            this.inc_name.Location = new System.Drawing.Point(157, 375);
+            this.inc_name.Location = new System.Drawing.Point(159, 364);
             this.inc_name.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.inc_name.Name = "inc_name";
             this.inc_name.Size = new System.Drawing.Size(239, 22);
@@ -239,7 +239,7 @@
             "Delhi",
             "Lakshadweep",
             "Puducherry"});
-            this.comboBox1.Location = new System.Drawing.Point(159, 318);
+            this.comboBox1.Location = new System.Drawing.Point(159, 298);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(239, 24);
@@ -249,7 +249,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(93, 318);
+            this.label8.Location = new System.Drawing.Point(95, 301);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(49, 17);
             this.label8.TabIndex = 15;
@@ -257,28 +257,29 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(159, 437);
+            this.button1.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.button1.Location = new System.Drawing.Point(159, 429);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(239, 23);
+            this.button1.Size = new System.Drawing.Size(239, 40);
             this.button1.TabIndex = 14;
             this.button1.Text = "Locate";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(100, 441);
+            this.label6.Location = new System.Drawing.Point(39, 441);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(43, 17);
+            this.label6.Size = new System.Drawing.Size(105, 17);
             this.label6.TabIndex = 13;
-            this.label6.Text = "Map :";
+            this.label6.Text = "Mark Location :";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(35, 378);
+            this.label5.Location = new System.Drawing.Point(28, 364);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(116, 17);
             this.label5.TabIndex = 11;
@@ -294,7 +295,7 @@
             this.Controls.Add(this.hospitalDetailbox);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
-            this.Text = "Register As Supplier";
+            this.Text = "Oxygen Supplier Registration";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
