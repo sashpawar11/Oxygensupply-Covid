@@ -113,5 +113,30 @@ namespace CovidApp
             locationSelector loc = new locationSelector();
             loc.Show();
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void oxy_stock_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void oxy_price_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

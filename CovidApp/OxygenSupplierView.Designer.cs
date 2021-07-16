@@ -39,24 +39,24 @@ namespace CovidApp
             this.personalDetailsView = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.personalDetailsView)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // oxy_price
             // 
-            this.oxy_price.Location = new System.Drawing.Point(73, 59);
+            this.oxy_price.Location = new System.Drawing.Point(73, 60);
             this.oxy_price.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.oxy_price.Name = "oxy_price";
             this.oxy_price.Size = new System.Drawing.Size(239, 22);
             this.oxy_price.TabIndex = 8;
+            this.oxy_price.TextChanged += new System.EventHandler(this.oxy_price_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label2.Location = new System.Drawing.Point(13, 62);
+            this.label2.Location = new System.Drawing.Point(13, 63);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 17);
             this.label2.TabIndex = 7;
@@ -65,25 +65,27 @@ namespace CovidApp
             // 
             // oxy_stock
             // 
-            this.oxy_stock.Location = new System.Drawing.Point(73, 124);
+            this.oxy_stock.Location = new System.Drawing.Point(73, 125);
             this.oxy_stock.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.oxy_stock.Name = "oxy_stock";
             this.oxy_stock.Size = new System.Drawing.Size(239, 22);
             this.oxy_stock.TabIndex = 9;
+            this.oxy_stock.TextChanged += new System.EventHandler(this.oxy_stock_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label1.Location = new System.Drawing.Point(13, 127);
+            this.label1.Location = new System.Drawing.Point(13, 128);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 17);
             this.label1.TabIndex = 10;
             this.label1.Text = "Stock* :";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(17, 435);
+            this.button1.Location = new System.Drawing.Point(12, 303);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(300, 37);
@@ -96,11 +98,12 @@ namespace CovidApp
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label3.Location = new System.Drawing.Point(9, 202);
+            this.label3.Location = new System.Drawing.Point(9, 203);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 17);
             this.label3.TabIndex = 12;
             this.label3.Text = "Status* :";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // comboBox1
             // 
@@ -109,11 +112,12 @@ namespace CovidApp
             "Available",
             "Unavailable",
             "Out of Stock"});
-            this.comboBox1.Location = new System.Drawing.Point(73, 199);
+            this.comboBox1.Location = new System.Drawing.Point(73, 200);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(239, 24);
             this.comboBox1.TabIndex = 13;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // personalDetailsView
             // 
@@ -131,17 +135,17 @@ namespace CovidApp
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.oxy_price);
             this.groupBox1.Controls.Add(this.oxy_stock);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(5, 55);
+            this.groupBox1.Location = new System.Drawing.Point(5, 154);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(331, 487);
+            this.groupBox1.Size = new System.Drawing.Size(331, 388);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Update Your Details";
@@ -151,23 +155,11 @@ namespace CovidApp
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
             this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(106, 331);
+            this.label4.Location = new System.Drawing.Point(98, 264);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(117, 15);
             this.label4.TabIndex = 18;
             this.label4.Text = "(*) - Required Fields";
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.SystemColors.Info;
-            this.button2.Location = new System.Drawing.Point(12, 264);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(300, 37);
-            this.button2.TabIndex = 18;
-            this.button2.Text = "Update Location";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // OxygenSupplierView
             // 
@@ -175,7 +167,6 @@ namespace CovidApp
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1186, 554);
             this.Controls.Add(this.personalDetailsView);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "OxygenSupplierView";
@@ -200,6 +191,5 @@ namespace CovidApp
         private System.Windows.Forms.DataGridView personalDetailsView;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button2;
     }
 }
