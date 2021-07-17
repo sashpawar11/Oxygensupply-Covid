@@ -77,6 +77,7 @@ namespace CovidApp
             this.map.Size = new System.Drawing.Size(607, 687);
             this.map.TabIndex = 1;
             this.map.Zoom = 0D;
+            this.map.OnMarkerClick += new GMap.NET.WindowsForms.MarkerClick(this.map_OnMarkerClick);
             this.map.Load += new System.EventHandler(this.map_Load);
             // 
             // searchBtn

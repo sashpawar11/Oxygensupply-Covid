@@ -76,5 +76,7 @@ namespace CovidApp
             locationSelector loc = new locationSelector();
             loc.ShowDialog();
         }
+
+        
     }
 }

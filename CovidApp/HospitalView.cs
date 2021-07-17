@@ -26,20 +26,7 @@ namespace CovidApp
         public static double default_lat = 20.5937;
         public static double default_longt = 78.9629;
 
-        public static string[] randomMarkers =
-        {
-            "GMarkerGoogleType.blue",
-            "GMarkerGoogleType.green",
-            "GMarkerGoogleType.orange",
-            "GMarkerGoogleType.pink",
-            "GMarkerGoogleType.purple",
-            "GMarkerGoogleType.red",
-            "GMarkerGoogleType.yellow",
-            "GMarkerGoogleType.lightblue"
-        };
-            
-
-                
+           
         
         private void HospitalView_Load(object sender, EventArgs e)
         {
@@ -364,14 +351,11 @@ namespace CovidApp
             {
 
                 // Column Indexing Starts From 0;
+                int random_number = new Random().Next(1, 8);
                 int latcln = s.Columns["Lat"].Ordinal;
                 int lngcln = s.Columns["Lng"].Ordinal;
                 double latd = double.Parse(s.Rows[i][latcln].ToString());
-                double lngd = double.Parse(s.Rows[i][lngcln].ToString());
-
-
-                string markertype = randomisedMarker(randomMarkers);
-                
+                double lngd = double.Parse(s.Rows[i][lngcln].ToString())
 
 
                 string stock = s.Rows[i][6].ToString();
@@ -380,22 +364,106 @@ namespace CovidApp
 
                 PointLatLng point = new PointLatLng(latd, lngd);
                 map.Position = point;
-                GMarkerGoogle m = new GMarkerGoogle(point, GMarkerGoogleType.purple);
-             
 
-                markersOverlay.Markers.Add(m);
-                m.ToolTipText = "\n\nName: " + name + "\n\nStock: " + stock + "\n\nStatus: " + status;
-                m.ToolTip.Fill = new SolidBrush(Color.FromArgb(255, Color.Black));
-                m.ToolTip.Foreground = Brushes.White;
-                m.ToolTip.TextPadding = new Size(30, 20);
-                m.ToolTipMode = MarkerTooltipMode.OnMouseOver;
-                
+                // Randomising MarkerType 
+                switch (random_number)                            
+                {
+                    case 1 : GMarkerGoogle m = new GMarkerGoogle(point, GMarkerGoogleType.purple);
+                                markersOverlay.Markers.Add(m);
+                                m.ToolTipText = "\n\nName: " + name + "\n\nStock: " + stock + "\n\nStatus: " + status;
+                                m.ToolTip.Fill = new SolidBrush(Color.FromArgb(255, Color.Black));
+                                m.ToolTip.Foreground = Brushes.White;
+                                m.ToolTip.TextPadding = new Size(30, 20);
+                                m.ToolTipMode = MarkerTooltipMode.OnMouseOver;
+                            break;
+                    case 2:
+                            GMarkerGoogle m2 = new GMarkerGoogle(point, GMarkerGoogleType.blue);
+                            markersOverlay.Markers.Add(m2);
+                            m2.ToolTipText = "\n\nName: " + name + "\n\nStock: " + stock + "\n\nStatus: " + status;
+                            m2.ToolTip.Fill = new SolidBrush(Color.FromArgb(255, Color.Black));
+                            m2.ToolTip.Foreground = Brushes.White;
+                            m2.ToolTip.TextPadding = new Size(30, 20);
+                            m2.ToolTipMode = MarkerTooltipMode.OnMouseOver;
+                            break;
 
+                    case 3:
+                            GMarkerGoogle m3 = new GMarkerGoogle(point, GMarkerGoogleType.red);
+                            markersOverlay.Markers.Add(m3);
+                            m3.ToolTipText = "\n\nName: " + name + "\n\nStock: " + stock + "\n\nStatus: " + status;
+                            m3.ToolTip.Fill = new SolidBrush(Color.FromArgb(255, Color.Black));
+                            m3.ToolTip.Foreground = Brushes.White;
+                            m3.ToolTip.TextPadding = new Size(30, 20);
+                            m3.ToolTipMode = MarkerTooltipMode.OnMouseOver;
+                            break;
+
+                    case 4:
+                            GMarkerGoogle m4 = new GMarkerGoogle(point, GMarkerGoogleType.pink);
+                            markersOverlay.Markers.Add(m4);
+                            m4.ToolTipText = "\n\nName: " + name + "\n\nStock: " + stock + "\n\nStatus: " + status;
+                            m4.ToolTip.Fill = new SolidBrush(Color.FromArgb(255, Color.Black));
+                            m4.ToolTip.Foreground = Brushes.White;
+                            m4.ToolTip.TextPadding = new Size(30, 20);
+                            m4.ToolTipMode = MarkerTooltipMode.OnMouseOver;
+                        break;
+
+                    case 5:
+                            GMarkerGoogle m5 = new GMarkerGoogle(point, GMarkerGoogleType.green);
+                            markersOverlay.Markers.Add(m5);
+                            m5.ToolTipText = "\n\nName: " + name + "\n\nStock: " + stock + "\n\nStatus: " + status;
+                            m5.ToolTip.Fill = new SolidBrush(Color.FromArgb(255, Color.Black));
+                            m5.ToolTip.Foreground = Brushes.White;
+                            m5.ToolTip.TextPadding = new Size(30, 20);
+                            m5.ToolTipMode = MarkerTooltipMode.OnMouseOver;
+                        break;
+
+                    case 6:
+                            GMarkerGoogle m6 = new GMarkerGoogle(point, GMarkerGoogleType.orange);
+                            markersOverlay.Markers.Add(m6);
+                            m6.ToolTipText = "\n\nName: " + name + "\n\nStock: " + stock + "\n\nStatus: " + status;
+                            m6.ToolTip.Fill = new SolidBrush(Color.FromArgb(255, Color.Black));
+                            m6.ToolTip.Foreground = Brushes.White;
+                            m6.ToolTip.TextPadding = new Size(30, 20);
+                            m6.ToolTipMode = MarkerTooltipMode.OnMouseOver;
+                            break;
+
+                    case 7:
+                        GMarkerGoogle m7 = new GMarkerGoogle(point, GMarkerGoogleType.yellow);
+                        markersOverlay.Markers.Add(m7);
+                        m7.ToolTipText = "\n\nName: " + name + "\n\nStock: " + stock + "\n\nStatus: " + status;
+                        m7.ToolTip.Fill = new SolidBrush(Color.FromArgb(255, Color.Black));
+                        m7.ToolTip.Foreground = Brushes.White;
+                        m7.ToolTip.TextPadding = new Size(30, 20);
+                        m7.ToolTipMode = MarkerTooltipMode.OnMouseOver;
+                        break;
+
+                    case 8: 
+                        GMarkerGoogle m8 = new GMarkerGoogle(point, GMarkerGoogleType.lightblue);
+                        markersOverlay.Markers.Add(m8);
+                        m8.ToolTipText = "\n\nName: " + name + "\n\nStock: " + stock + "\n\nStatus: " + status;
+                        m8.ToolTip.Fill = new SolidBrush(Color.FromArgb(255, Color.Black));
+                        m8.ToolTip.Foreground = Brushes.White;
+                        m8.ToolTip.TextPadding = new Size(30, 20);
+                        m8.ToolTipMode = MarkerTooltipMode.OnMouseOver;
+                        break;
+
+                    default :
+                        MessageBox.Show("Something Went Wrong, please retry.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+
+
+                }
 
 
             }
 
             RefreshMap();
+        }
+
+    
+
+        private void map_OnMarkerClick(GMapMarker item, MouseEventArgs e)
+        {
+            
         }
     }
 }
