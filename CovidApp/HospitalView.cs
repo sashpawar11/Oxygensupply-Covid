@@ -355,10 +355,10 @@ namespace CovidApp
             return t[index];
         }
 
-
-        // Function To Place Markers On Map
         private void placeMarkers(DataTable s)
         {
+            GMapOverlay markersOverlay = new GMapOverlay("markers");
+            map.Overlays.Add(markersOverlay);
 
             for (int i = s.Rows.Count - 1; i >= 0; i--)
             {
@@ -371,9 +371,7 @@ namespace CovidApp
 
 
                 string markertype = randomisedMarker(randomMarkers);
-                GMapOverlay markersOverlay = new GMapOverlay("markers");
-                map.Overlays.Add(markersOverlay);
-
+                
 
 
                 string stock = s.Rows[i][6].ToString();
@@ -385,12 +383,14 @@ namespace CovidApp
                 GMarkerGoogle m = new GMarkerGoogle(point, GMarkerGoogleType.purple);
 
                 markersOverlay.Markers.Add(m);
-
+                m.ToolTipText = "\n\nName: " + name + "\n\nStock: " + stock + "\n\nStatus: " + status;
                 m.ToolTip.Fill = new SolidBrush(Color.FromArgb(255, Color.Black));
                 m.ToolTip.Foreground = Brushes.White;
-                m.ToolTip.TextPadding = new Size(20, 20);
+                m.ToolTip.TextPadding = new Size(30, 20);
                 m.ToolTipMode = MarkerTooltipMode.OnMouseOver;
-                m.ToolTipText = "\n\nName: " + name + "\n\nStock: " + stock + "\n\nStatus: " + status;
+                
+
+
 
             }
 
