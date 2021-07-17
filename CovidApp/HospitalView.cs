@@ -381,6 +381,7 @@ namespace CovidApp
                 PointLatLng point = new PointLatLng(latd, lngd);
                 map.Position = point;
                 GMarkerGoogle m = new GMarkerGoogle(point, GMarkerGoogleType.purple);
+             
 
                 markersOverlay.Markers.Add(m);
                 m.ToolTipText = "\n\nName: " + name + "\n\nStock: " + stock + "\n\nStatus: " + status;
