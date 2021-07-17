@@ -351,7 +351,7 @@ namespace CovidApp
             {
 
                 // Column Indexing Starts From 0;
-                int random_number = new Random().Next(1, 8);
+                
                 int latcln = s.Columns["Lat"].Ordinal;
                 int lngcln = s.Columns["Lng"].Ordinal;
                 double latd = double.Parse(s.Rows[i][latcln].ToString());
@@ -366,7 +366,7 @@ namespace CovidApp
                 map.Position = point;
 
                 // Randomising MarkerType 
-                switch (random_number)                            
+                switch (randomNumberFunction())                            
                 {
                     case 1 : GMarkerGoogle m = new GMarkerGoogle(point, GMarkerGoogleType.purple);
                                 markersOverlay.Markers.Add(m);
@@ -459,7 +459,12 @@ namespace CovidApp
             RefreshMap();
         }
 
-    
+        
+        private int randomNumberFunction()
+        {
+            int rndnumber = new Random().Next(1, 8);
+            return rndnumber;
+        }
 
         private void map_OnMarkerClick(GMapMarker item, MouseEventArgs e)
         {
