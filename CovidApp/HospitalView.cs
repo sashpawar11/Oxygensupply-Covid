@@ -355,7 +355,7 @@ namespace CovidApp
                 int latcln = s.Columns["Lat"].Ordinal;
                 int lngcln = s.Columns["Lng"].Ordinal;
                 double latd = double.Parse(s.Rows[i][latcln].ToString());
-                double lngd = double.Parse(s.Rows[i][lngcln].ToString())
+                double lngd = double.Parse(s.Rows[i][lngcln].ToString());
 
 
                 string stock = s.Rows[i][6].ToString();
