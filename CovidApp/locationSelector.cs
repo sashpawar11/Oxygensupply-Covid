@@ -67,9 +67,8 @@ namespace CovidApp
                 //latBox.Text = lat.ToString();
                 //longBox.Text = longt.ToString();
 
-                
-                LoadMap(point);
 
+                LoadMap(point);
                 AddMarker(point);
 
             }
