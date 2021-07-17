@@ -67,7 +67,7 @@ namespace CovidApp
                 //latBox.Text = lat.ToString();
                 //longBox.Text = longt.ToString();
 
-
+                
                 LoadMap(point);
                 AddMarker(point);
 
@@ -84,8 +84,9 @@ namespace CovidApp
             
             var markers = new GMapOverlay("markers");
             var marker = new GMarkerGoogle(pointToAdd, GMarkerGoogleType.purple);
-            markers.Markers.Add(marker);
             locatormap.Overlays.Add(markers);
+            markers.Markers.Add(marker);
+            
 
 
         }

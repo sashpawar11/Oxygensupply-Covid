@@ -44,7 +44,7 @@ namespace CovidApp
             // 
             this.splitter1.Location = new System.Drawing.Point(0, 0);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(582, 687);
+            this.splitter1.Size = new System.Drawing.Size(607, 687);
             this.splitter1.TabIndex = 0;
             this.splitter1.TabStop = false;
             this.splitter1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitter1_SplitterMoved);
@@ -60,7 +60,7 @@ namespace CovidApp
             this.map.GrayScaleMode = false;
             this.map.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
             this.map.LevelsKeepInMemory = 5;
-            this.map.Location = new System.Drawing.Point(12, 12);
+            this.map.Location = new System.Drawing.Point(0, 0);
             this.map.MarkersEnabled = true;
             this.map.MaxZoom = 18;
             this.map.MinZoom = 2;
@@ -74,7 +74,7 @@ namespace CovidApp
             this.map.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.map.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.map.ShowTileGridLines = false;
-            this.map.Size = new System.Drawing.Size(559, 663);
+            this.map.Size = new System.Drawing.Size(607, 687);
             this.map.TabIndex = 1;
             this.map.Zoom = 0D;
             this.map.Load += new System.EventHandler(this.map_Load);
