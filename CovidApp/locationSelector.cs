@@ -62,8 +62,10 @@ namespace CovidApp
                 double lat = point.Lat;
                 double longt = point.Lng;
 
-                latBox.Text = lat.ToString();
-                longBox.Text = longt.ToString();
+                latitude = lat.ToString();
+                longitude = longt.ToString();
+                //latBox.Text = lat.ToString();
+                //longBox.Text = longt.ToString();
 
                 
                 LoadMap(point);
@@ -82,7 +84,7 @@ namespace CovidApp
         {
             
             var markers = new GMapOverlay("markers");
-            var marker = new GMarkerGoogle(pointToAdd, GMarkerGoogleType.purple_dot);
+            var marker = new GMarkerGoogle(pointToAdd, GMarkerGoogleType.purple);
             markers.Markers.Add(marker);
             locatormap.Overlays.Add(markers);
 
@@ -98,14 +100,14 @@ namespace CovidApp
 
         private bool isValid()
         {
-            if (latBox.Text == string.Empty)
+            if (latitude == string.Empty)
             {
-                MessageBox.Show("No Latitude Entered. Please Re-mark your location!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please Re-mark your location!", "Save Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            else if (longBox.Text == string.Empty)
+            else if (longitude == string.Empty)
             {
-                MessageBox.Show("No Longitude Entered. Please Re-mark your location!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(" Please Re-mark your location!", "Save Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
 
             }
@@ -117,8 +119,8 @@ namespace CovidApp
             
             locatormap.Overlays.Clear();
             RefreshMap();
-            latBox.Text = "";
-            longBox.Text = "";
+            latitude = "";
+            longitude = "";
             RefreshMap();
         }
 
@@ -133,14 +135,17 @@ namespace CovidApp
         {
             if (isValid())
             {
-                latitude = latBox.Text;
-                longitude = longBox.Text;
                 MessageBox.Show("Location Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             this.Close();
         }
 
         private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }
