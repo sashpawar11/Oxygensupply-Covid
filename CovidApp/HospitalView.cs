@@ -26,8 +26,11 @@ namespace CovidApp
         public static double default_lat = 20.5937;
         public static double default_longt = 78.9629;
 
-           
-        
+        // Connection string for OleDB Connection to Excel File
+        string connectionString = @"provider = Microsoft.ACE.OLEDB.12.0;      
+                            Data source = D:\SuppliersDatabase.xlsx; 
+                            Extended Properties = 'Excel 8.0'";
+
         private void HospitalView_Load(object sender, EventArgs e)
         {
             //GMapProviders.GoogleMap.ApiKey = @"'AIzaSyCqQU_079Ch8SYiLbC4Eql3D6SOKM_b7ic";
@@ -40,22 +43,53 @@ namespace CovidApp
             map.ShowCenter = false;
             map.DragButton = MouseButtons.Left;
             map.Position = new GMap.NET.PointLatLng(default_lat, default_longt);
+
+            OleDbConnection formconnection = new OleDbConnection(connectionString);          // Reading Oxygen Suppliers Database From Excel File
+            DataTable SheetData = new DataTable();                // Creating DataTable for the DataGrid in Hospital View
+            formconnection.Open();
+            OleDbCommand cmd = new OleDbCommand();
+
+
+
+            /// Query to search Data and Fetch according to the State Selected.
+            string query = @"SELECT [Name], [Contact Number], [Address], [State], [Company Name], [Price], [Stock] , [Status], [Lat] , [Lng] from [Sheet1$]";
+            cmd.Connection = formconnection;
+            cmd.CommandText = query;
+            cmd.ExecuteNonQuery();
+            ((OleDbDataAdapter)new OleDbDataAdapter(cmd)).Fill(SheetData);
+             // Filling the DataTable with all entries from Excel File (Oxygen Suppliers)
+            formconnection.Close();
+            // Displaying all the data in the respective GridView in HospitalView
+            SheetData = SheetData.Rows
+                .Cast<DataRow>()
+                .Where(row => !row.ItemArray.All(field => field is DBNull ||
+                                                 string.IsNullOrWhiteSpace(field as string)))
+                .CopyToDataTable();
+
+
+            SuppliersDataGrid.DataSource = SheetData;
+
+            SuppliersDataGrid.Columns["Lat"].Visible = false;
+            SuppliersDataGrid.Columns["Lng"].Visible = false;
+       
+            //GMapOverlay markersOverlay = new GMapOverlay("markers");
+           //map.Overlays.Add(markersOverlay);
+            placeMarkers(SheetData);
+
             RefreshMap();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
 
-            // Connection string for OleDB Connection to Excel File
-            string connectionString = @"provider = Microsoft.ACE.OLEDB.12.0;      
-                            Data source = D:\SuppliersDatabase.xlsx; 
-                            Extended Properties = 'Excel 8.0'";
+            
+           
             
             OleDbConnection oleDbConnection = new OleDbConnection(connectionString);          // Reading Oxygen Suppliers Database From Excel File
             DataTable SheetData = new DataTable();                // Creating DataTable for the DataGrid in Hospital View
             oleDbConnection.Open(); 
             OleDbCommand cmd = new OleDbCommand();
-
+            map.Overlays.Clear();
             var selectedState = stateSelector.Text;
 
             
@@ -66,19 +100,18 @@ namespace CovidApp
             cmd.ExecuteNonQuery();
             ((OleDbDataAdapter)new OleDbDataAdapter(cmd)).Fill(SheetData);        // Filling the DataTable with all entries from Excel File (Oxygen Suppliers)
             oleDbConnection.Close();
+            SheetData = SheetData.Rows
+               .Cast<DataRow>()
+               .Where(row => !row.ItemArray.All(field => field is DBNull ||
+                                                string.IsNullOrWhiteSpace(field as string)))
+               .CopyToDataTable();
             SuppliersDataGrid.DataSource = SheetData;      // Displaying all the data in the respective GridView in HospitalView
             
             SuppliersDataGrid.Columns["Lat"].Visible = false;
             SuppliersDataGrid.Columns["Lng"].Visible = false;
-            //SheetData = SheetData.Rows
-            //    .Cast<DataRow>()
-            //    .Where(row => !row.ItemArray.All(field => field is DBNull ||
-            //                                     string.IsNullOrWhiteSpace(field as string)))
-            //    .CopyToDataTable();
+           
 
-            GMapOverlay markersOverlay = new GMapOverlay("markers");
-            map.Overlays.Add(markersOverlay);
-            RefreshMap();
+
 
             // Setting Map Location According to Selected State
             switch (selectedState)
@@ -86,6 +119,7 @@ namespace CovidApp
                 case "Andhra Pradesh":
                     map.Zoom = 6;
                     map.Position = new PointLatLng(15.9129, 79.7400);
+                    
                     placeMarkers(SheetData);
                     break;
 
@@ -460,7 +494,7 @@ namespace CovidApp
         }
 
         
-        private int randomNumberFunction()
+        public int randomNumberFunction()
         {
             int rndnumber = new Random().Next(1, 8);
             return rndnumber;
