@@ -27,8 +27,8 @@ $ git clone https://github.com/sashpawar11/Oxygensupply-Covid.git
 This project is being developed by:
 
 - Saish Pawar @sashpawar11
-- Siddhant Desai
-- Nihal Kamat
+- Siddhant Desai @sidesai2001
+- Nihal Kamat @starix2436
 
 
 
