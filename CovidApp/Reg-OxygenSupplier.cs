@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.OleDb;
 using System.Windows.Forms;
+using System.IO;
 
 
 namespace CovidApp
@@ -19,17 +20,18 @@ namespace CovidApp
             InitializeComponent();
         }
 
+       
+
         private void Form1_Load(object sender, EventArgs e)
         {
-
+           
         }
+
+       
+
 
         private void registerBtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Login login = new Login();
-            login.Closed += (s, args) => this.Close();
-            login.Show();
             String user1 = username.Text;
             String pass1 = password.Text;
             String oxyname = hosp_name.Text;
@@ -40,9 +42,12 @@ namespace CovidApp
             String lat = locationSelector.latitude;
             String lng = locationSelector.longitude;
 
+
+
             string connectionString = @"provider = Microsoft.ACE.OLEDB.12.0; 
                             Data source = D:\SuppliersDatabase.xlsx; 
                             Extended Properties = 'Excel 8.0'";
+
             OleDbConnection oleDbConnection = new OleDbConnection(connectionString);
 
             oleDbConnection.Open();
@@ -52,6 +57,12 @@ namespace CovidApp
             cmd.CommandText = query;
             cmd.ExecuteNonQuery();
             oleDbConnection.Close();
+            
+            this.Hide();
+            Login login = new Login();
+            login.Closed += (s, args) => this.Close();
+            login.Show();
+            
         }
 
         private void hospitalDetailbox_Enter(object sender, EventArgs e)
