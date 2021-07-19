@@ -187,6 +187,7 @@ namespace CovidApp
             this.Controls.Add(this.map);
             this.Controls.Add(this.splitter1);
             this.Name = "HospitalView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HospitalView";
             this.Load += new System.EventHandler(this.HospitalView_Load);
             this.groupBox1.ResumeLayout(false);

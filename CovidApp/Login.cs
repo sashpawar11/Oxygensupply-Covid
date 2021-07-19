@@ -132,5 +132,13 @@ namespace CovidApp
         {
             this.Close();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            RegisterScreen rg = new RegisterScreen();
+            rg.Closed += (s, args) => this.Close();
+            rg.Show();
+        }
     }
 }

@@ -53,6 +53,7 @@ namespace CovidApp
                 cmd.ExecuteNonQuery();
                 loadData();
                 oleDbConnection.Close();
+                
 
             }
             

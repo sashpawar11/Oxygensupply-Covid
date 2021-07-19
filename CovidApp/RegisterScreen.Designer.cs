@@ -111,6 +111,7 @@
             this.Controls.Add(this.regSupplierBtn);
             this.Controls.Add(this.regHospitalBtn);
             this.Name = "RegisterScreen";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Register/Login";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);

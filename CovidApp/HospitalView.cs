@@ -100,241 +100,253 @@ namespace CovidApp
             cmd.ExecuteNonQuery();
             ((OleDbDataAdapter)new OleDbDataAdapter(cmd)).Fill(SheetData);        // Filling the DataTable with all entries from Excel File (Oxygen Suppliers)
             oleDbConnection.Close();
-            SheetData = SheetData.Rows
-               .Cast<DataRow>()
-               .Where(row => !row.ItemArray.All(field => field is DBNull ||
-                                                string.IsNullOrWhiteSpace(field as string)))
-               .CopyToDataTable();
+
+            //Checks for empty rows in datatable and deletes them
+            try
+            {
+                SheetData = SheetData.Rows
+                   .Cast<DataRow>()
+                   .Where(row => !row.ItemArray.All(field => field is DBNull ||
+                                                    string.IsNullOrWhiteSpace(field as string)))
+                   .CopyToDataTable();
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Please select a state!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             SuppliersDataGrid.DataSource = SheetData;      // Displaying all the data in the respective GridView in HospitalView
-            
             SuppliersDataGrid.Columns["Lat"].Visible = false;
             SuppliersDataGrid.Columns["Lng"].Visible = false;
-           
+
 
 
 
             // Setting Map Location According to Selected State
-            switch (selectedState)
-            {
-                case "Andhra Pradesh":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(15.9129, 79.7400);
-                    
-                    placeMarkers(SheetData);
-                    break;
+     
+                switch (selectedState)
+                {
+                    case "Andhra Pradesh":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(15.9129, 79.7400);
 
-                case "Arunachal Pradesh":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(28.2180, 94.7278);
-                    placeMarkers(SheetData);
-                    break;
+                        placeMarkers(SheetData);
+                        break;
 
-                case "Assam":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(26.244156, 92.537842);
-                    placeMarkers(SheetData);
-                    break;
+                    case "Arunachal Pradesh":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(28.2180, 94.7278);
+                        placeMarkers(SheetData);
+                        break;
 
-                case "Bihar":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(25.78541445, 87.4799727);
-                    placeMarkers(SheetData);
-                    break;
+                    case "Assam":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(26.244156, 92.537842);
+                        placeMarkers(SheetData);
+                        break;
 
-                case "Chhattisgarh":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(22.09042035, 82.15998734);
-                    placeMarkers(SheetData);
-                    break;
+                    case "Bihar":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(25.78541445, 87.4799727);
+                        placeMarkers(SheetData);
+                        break;
 
-                case "Goa":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(15.491997, 73.81800065);
-                    placeMarkers(SheetData);
-                    break;
+                    case "Chhattisgarh":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(22.09042035, 82.15998734);
+                        placeMarkers(SheetData);
+                        break;
 
-                case "Gujarat":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(22.309425, 72.136230);
-                    placeMarkers(SheetData);
-                    break;
+                    case "Goa":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(15.491997, 73.81800065);
+                        placeMarkers(SheetData);
+                        break;
 
-                case "Haryana":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(29.065773, 76.040497);
-                    placeMarkers(SheetData);
-                    break;
+                    case "Gujarat":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(22.309425, 72.136230);
+                        placeMarkers(SheetData);
+                        break;
 
-                case "Himachal Pradesh":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(32.084206, 77.571167);
-                    placeMarkers(SheetData);
-                    break;
+                    case "Haryana":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(29.065773, 76.040497);
+                        placeMarkers(SheetData);
+                        break;
 
-                case "Jammu and Kashmir":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(34.29995933, 74.46665849);
-                    placeMarkers(SheetData);
-                    break;
+                    case "Himachal Pradesh":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(32.084206, 77.571167);
+                        placeMarkers(SheetData);
+                        break;
 
-                case "Jharkhand":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(23.80039349, 86.41998572);
-                    placeMarkers(SheetData);
-                    break;
+                    case "Jammu and Kashmir":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(34.29995933, 74.46665849);
+                        placeMarkers(SheetData);
+                        break;
 
-                case "Karnataka":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(12.57038129, 76.91999711);
-                    placeMarkers(SheetData);
-                    break;
+                    case "Jharkhand":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(23.80039349, 86.41998572);
+                        placeMarkers(SheetData);
+                        break;
 
-                case "Kerala":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(8.900372741, 76.56999263);
-                    placeMarkers(SheetData);
-                    break;
+                    case "Karnataka":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(12.57038129, 76.91999711);
+                        placeMarkers(SheetData);
+                        break;
 
-                case "Madhya Pradesh":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(21.30039105, 76.13001949);
-                    placeMarkers(SheetData);
-                    break;
+                    case "Kerala":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(8.900372741, 76.56999263);
+                        placeMarkers(SheetData);
+                        break;
 
-                case "Maharashtra":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(19.25023195, 73.16017493);
-                    placeMarkers(SheetData);
-                    break;
+                    case "Madhya Pradesh":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(21.30039105, 76.13001949);
+                        placeMarkers(SheetData);
+                        break;
 
-                case "Manipur":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(24.79997072, 93.95001705);
-                    placeMarkers(SheetData);
-                    break;
+                    case "Maharashtra":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(19.25023195, 73.16017493);
+                        placeMarkers(SheetData);
+                        break;
 
-                case "Mizoram":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(23.71039899, 92.72001461);
-                    placeMarkers(SheetData);
-                    break;
+                    case "Manipur":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(24.79997072, 93.95001705);
+                        placeMarkers(SheetData);
+                        break;
 
-                case "Nagaland":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(25.6669979, 94.11657019);
-                    placeMarkers(SheetData);
-                    break;
+                    case "Mizoram":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(23.71039899, 92.72001461);
+                        placeMarkers(SheetData);
+                        break;
 
-                case "Odisha":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(19.82042971, 85.90001746);
-                    placeMarkers(SheetData);
-                    break;
+                    case "Nagaland":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(25.6669979, 94.11657019);
+                        placeMarkers(SheetData);
+                        break;
 
-                case "Punjab":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(31.51997398, 75.98000281);
-                    placeMarkers(SheetData);
-                    break;
+                    case "Odisha":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(19.82042971, 85.90001746);
+                        placeMarkers(SheetData);
+                        break;
 
-                case "Rajasthan":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(26.44999921, 74.63998124);
-                    placeMarkers(SheetData);
-                    break;
+                    case "Punjab":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(31.51997398, 75.98000281);
+                        placeMarkers(SheetData);
+                        break;
 
-                case "Sikkim":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(27.3333303, 88.6166475);
-                    placeMarkers(SheetData);
-                    break;
+                    case "Rajasthan":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(26.44999921, 74.63998124);
+                        placeMarkers(SheetData);
+                        break;
 
-                case "Tamil Nadu":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(12.92038576, 79.15004187);
-                    placeMarkers(SheetData);
-                    break;
+                    case "Sikkim":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(27.3333303, 88.6166475);
+                        placeMarkers(SheetData);
+                        break;
 
-                case "Telangana":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(17.123184, 79.208824);
-                    placeMarkers(SheetData);
-                    break;
+                    case "Tamil Nadu":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(12.92038576, 79.15004187);
+                        placeMarkers(SheetData);
+                        break;
 
-                case "Tripura":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(23.83540428, 91.27999914);
-                    placeMarkers(SheetData);
-                    break;
+                    case "Telangana":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(17.123184, 79.208824);
+                        placeMarkers(SheetData);
+                        break;
 
-                case "Uttarakhand":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(30.0668, 79.0193);
-                    placeMarkers(SheetData);
-                    break;
+                    case "Tripura":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(23.83540428, 91.27999914);
+                        placeMarkers(SheetData);
+                        break;
 
-                case "Uttar Pradesh":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(27.59998069, 78.05000565);
-                    placeMarkers(SheetData);
-                    break;
+                    case "Uttarakhand":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(30.0668, 79.0193);
+                        placeMarkers(SheetData);
+                        break;
 
-                case "West Bengal":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(22.58039044, 88.32994665);
-                    placeMarkers(SheetData);
-                    break;
+                    case "Uttar Pradesh":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(27.59998069, 78.05000565);
+                        placeMarkers(SheetData);
+                        break;
 
-                case "Andaman and Nicobar Islands":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(11.66702557, 92.73598262);
-                    placeMarkers(SheetData);
-                    break;
+                    case "West Bengal":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(22.58039044, 88.32994665);
+                        placeMarkers(SheetData);
+                        break;
 
-                case "Chandigarh":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(30.71999697, 76.78000565);
-                    placeMarkers(SheetData);
-                    break;
+                    case "Andaman and Nicobar Islands":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(11.66702557, 92.73598262);
+                        placeMarkers(SheetData);
+                        break;
 
-                case "Dadra and Nagar Haveli":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(20.26657819, 73.0166178);
-                    placeMarkers(SheetData);
-                    break;
+                    case "Chandigarh":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(30.71999697, 76.78000565);
+                        placeMarkers(SheetData);
+                        break;
 
-                case "Daman and Diu":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(20.2270, 73.0169);
-                    placeMarkers(SheetData);
-                    break;
+                    case "Dadra and Nagar Haveli":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(20.26657819, 73.0166178);
+                        placeMarkers(SheetData);
+                        break;
 
-                case "Delhi":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(28.6699929, 77.23000403);
-                    placeMarkers(SheetData);
-                    break;
+                    case "Daman and Diu":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(20.2270, 73.0169);
+                        placeMarkers(SheetData);
+                        break;
 
-                case "Lakshadweep":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(10.56257331, 72.63686717);
-                    placeMarkers(SheetData);
-                    break;
+                    case "Delhi":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(28.6699929, 77.23000403);
+                        placeMarkers(SheetData);
+                        break;
 
-                case "Puducherry":
-                    map.Zoom = 6;
-                    map.Position = new PointLatLng(11.93499371, 79.83000037);
-                    placeMarkers(SheetData);
-                    break;
+                    case "Lakshadweep":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(10.56257331, 72.63686717);
+                        placeMarkers(SheetData);
+                        break;
 
-                case "":
-                    MessageBox.Show("Please select a state!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
+                    case "Puducherry":
+                        map.Zoom = 6;
+                        map.Position = new PointLatLng(11.93499371, 79.83000037);
+                        placeMarkers(SheetData);
+                        break;
 
-                default:
-                    MessageBox.Show("Please select a state!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
-            }
+                    case "":
+                        MessageBox.Show("Please select a state!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+
+                    default:
+                        
+                        break;
+                }
+            
+            
             
         }
 
@@ -496,7 +508,7 @@ namespace CovidApp
         
         public int randomNumberFunction()
         {
-            int rndnumber = new Random().Next(1, 8);
+            int rndnumber = new Random().Next(1,9);
             return rndnumber;
         }
 

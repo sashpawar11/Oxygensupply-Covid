@@ -38,8 +38,8 @@ namespace CovidApp
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.personalDetailsView = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.infoLabel = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.personalDetailsView)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -152,17 +152,6 @@ namespace CovidApp
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Update Your Details";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(100, 255);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(117, 15);
-            this.label4.TabIndex = 18;
-            this.label4.Text = "(*) - Required Fields";
-            // 
             // infoLabel
             // 
             this.infoLabel.AutoSize = true;
@@ -174,6 +163,17 @@ namespace CovidApp
             this.infoLabel.Text = "Price (₹) - Per Cylinder\r\n\r\nStock - Number of Oxygen Cylinders Avalaible\r\n\r\nStatu" +
     "s - Set to Available, Unavailable or Out Of Stock\r\n\r\n";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(100, 255);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(117, 15);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "(*) - Required Fields";
+            // 
             // OxygenSupplierView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -183,6 +183,7 @@ namespace CovidApp
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "OxygenSupplierView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OxygenSupplierView";
             this.Load += new System.EventHandler(this.OxygenSupplierView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.personalDetailsView)).EndInit();
