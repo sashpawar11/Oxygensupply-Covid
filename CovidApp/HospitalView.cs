@@ -77,6 +77,7 @@ namespace CovidApp
             placeMarkers(SheetData);
 
             RefreshMap();
+            StyleDataGrid(SuppliersDataGrid);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -515,6 +516,22 @@ namespace CovidApp
         private void map_OnMarkerClick(GMapMarker item, MouseEventArgs e)
         {
             
+        }
+
+        // Styling DataGrid
+
+        private void StyleDataGrid(DataGridView dg)
+        {
+            dg.EnableHeadersVisualStyles = false;
+            dg.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(245, 231, 157);
+            dg.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
+            dg.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.EnableResizing;
+            dg.DefaultCellStyle.Font = new Font("Arial", 9);
+            dg.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+          
+            dg.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(227, 185, 32);
+            dg.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(227, 185, 32);
+            dg.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 9);
         }
     }
 }

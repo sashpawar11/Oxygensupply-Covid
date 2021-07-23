@@ -31,6 +31,7 @@ namespace CovidApp
         private void OxygenSupplierView_Load(object sender, EventArgs e)
         {
             loadData();
+            StyleDataGrid(personalDetailsView);
             
         }
 
@@ -138,6 +139,19 @@ namespace CovidApp
         private void oxy_price_TextChanged(object sender, EventArgs e)
         {
 
+        }
+        private void StyleDataGrid(DataGridView dg)
+        {
+            dg.EnableHeadersVisualStyles = false;
+            dg.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(245, 231, 157);
+            dg.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
+            dg.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.EnableResizing;
+            dg.DefaultCellStyle.Font = new Font("Arial", 9);
+            dg.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+
+            dg.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(227, 185, 32);
+            dg.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(227, 185, 32);
+            dg.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 9);
         }
     }
 }

@@ -155,7 +155,9 @@ namespace CovidApp
             this.SuppliersDataGrid.AllowUserToDeleteRows = false;
             this.SuppliersDataGrid.AllowUserToOrderColumns = true;
             this.SuppliersDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SuppliersDataGrid.BackgroundColor = System.Drawing.Color.Beige;
             this.SuppliersDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.SuppliersDataGrid.GridColor = System.Drawing.Color.Goldenrod;
             this.SuppliersDataGrid.Location = new System.Drawing.Point(0, 34);
             this.SuppliersDataGrid.Name = "SuppliersDataGrid";
             this.SuppliersDataGrid.ReadOnly = true;
