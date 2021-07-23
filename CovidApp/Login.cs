@@ -140,5 +140,10 @@ namespace CovidApp
             rg.Closed += (s, args) => this.Close();
             rg.Show();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
     }
 }
