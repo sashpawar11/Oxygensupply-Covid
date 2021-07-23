@@ -63,13 +63,14 @@ namespace CovidApp
             ro.Show();
         }
 
-        private void loginBtn_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Login login = new Login();
-            login.Closed += (s, args) => this.Close();
-            login.Show();
+            this.Close();
+        }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
         }
     }
 }
