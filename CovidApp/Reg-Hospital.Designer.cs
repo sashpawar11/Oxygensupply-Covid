@@ -232,6 +232,7 @@
             this.Controls.Add(this.hospitalDetailbox);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Reg_Hospital";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Register As Hospital";
             this.Load += new System.EventHandler(this.Reg_Hospital_Load);
             this.hospitalDetailbox.ResumeLayout(false);
