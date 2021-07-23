@@ -130,7 +130,7 @@ namespace CovidApp
             this.personalDetailsView.Name = "personalDetailsView";
             this.personalDetailsView.RowHeadersWidth = 51;
             this.personalDetailsView.RowTemplate.Height = 24;
-            this.personalDetailsView.Size = new System.Drawing.Size(807, 497);
+            this.personalDetailsView.Size = new System.Drawing.Size(843, 497);
             this.personalDetailsView.TabIndex = 16;
             this.personalDetailsView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -178,7 +178,7 @@ namespace CovidApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1186, 554);
+            this.ClientSize = new System.Drawing.Size(1222, 554);
             this.Controls.Add(this.personalDetailsView);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
