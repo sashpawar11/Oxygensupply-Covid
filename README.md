@@ -21,6 +21,7 @@ Clone this repository on your local machine using this command, and import the p
 $ git clone https://github.com/sashpawar11/Oxygensupply-Covid.git
 ```
 
+Copy The Excel Files to your local D: Drive before running the project.
 
 ## Developers
 
