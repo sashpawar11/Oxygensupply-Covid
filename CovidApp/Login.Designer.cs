@@ -150,12 +150,13 @@
             this.supp_box.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.supp_box.AutoSize = true;
+            this.supp_box.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.supp_box.Font = new System.Drawing.Font("Arial", 8.5F);
             this.supp_box.ForeColor = System.Drawing.Color.Orange;
-            this.supp_box.Location = new System.Drawing.Point(954, 427);
+            this.supp_box.Location = new System.Drawing.Point(957, 427);
             this.supp_box.Margin = new System.Windows.Forms.Padding(4);
             this.supp_box.Name = "supp_box";
-            this.supp_box.Size = new System.Drawing.Size(83, 21);
+            this.supp_box.Size = new System.Drawing.Size(80, 21);
             this.supp_box.TabIndex = 14;
             this.supp_box.Text = "Supplier";
             this.supp_box.UseVisualStyleBackColor = true;
