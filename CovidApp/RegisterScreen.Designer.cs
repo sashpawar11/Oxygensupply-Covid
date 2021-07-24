@@ -47,7 +47,7 @@
             // 
             this.regHospitalBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.regHospitalBtn.BackColor = System.Drawing.Color.Orange;
-            this.regHospitalBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.regHospitalBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.regHospitalBtn.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.regHospitalBtn.ForeColor = System.Drawing.Color.White;
             this.regHospitalBtn.Location = new System.Drawing.Point(766, 271);
@@ -62,7 +62,7 @@
             // 
             this.regSupplierBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.regSupplierBtn.BackColor = System.Drawing.Color.Orange;
-            this.regSupplierBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.regSupplierBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.regSupplierBtn.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.regSupplierBtn.ForeColor = System.Drawing.Color.White;
             this.regSupplierBtn.Location = new System.Drawing.Point(766, 386);

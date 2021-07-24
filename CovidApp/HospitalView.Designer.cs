@@ -83,17 +83,23 @@ namespace CovidApp
             // searchBtn
             // 
             this.searchBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchBtn.Location = new System.Drawing.Point(1169, 34);
+            this.searchBtn.BackColor = System.Drawing.Color.Black;
+            this.searchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.searchBtn.Font = new System.Drawing.Font("Arial", 9F);
+            this.searchBtn.ForeColor = System.Drawing.Color.White;
+            this.searchBtn.Location = new System.Drawing.Point(1079, 27);
             this.searchBtn.Name = "searchBtn";
-            this.searchBtn.Size = new System.Drawing.Size(123, 23);
+            this.searchBtn.Size = new System.Drawing.Size(242, 31);
             this.searchBtn.TabIndex = 3;
             this.searchBtn.Text = "🔍";
-            this.searchBtn.UseVisualStyleBackColor = true;
+            this.searchBtn.UseVisualStyleBackColor = false;
             this.searchBtn.Click += new System.EventHandler(this.button2_Click);
             // 
             // stateSelector
             // 
             this.stateSelector.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.stateSelector.Font = new System.Drawing.Font("Arial", 9F);
+            this.stateSelector.ForeColor = System.Drawing.Color.Black;
             this.stateSelector.FormattingEnabled = true;
             this.stateSelector.Items.AddRange(new object[] {
             "Andhra Pradesh",
@@ -132,9 +138,9 @@ namespace CovidApp
             "Delhi",
             "Lakshadweep",
             "Puducherry"});
-            this.stateSelector.Location = new System.Drawing.Point(910, 34);
+            this.stateSelector.Location = new System.Drawing.Point(724, 30);
             this.stateSelector.Name = "stateSelector";
-            this.stateSelector.Size = new System.Drawing.Size(239, 24);
+            this.stateSelector.Size = new System.Drawing.Size(326, 25);
             this.stateSelector.TabIndex = 17;
             this.stateSelector.SelectedIndexChanged += new System.EventHandler(this.stateSelector_SelectedIndexChanged);
             // 
@@ -142,6 +148,8 @@ namespace CovidApp
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.SuppliersDataGrid);
+            this.groupBox1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.Black;
             this.groupBox1.Location = new System.Drawing.Point(613, 80);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(714, 609);
@@ -154,7 +162,8 @@ namespace CovidApp
             this.SuppliersDataGrid.AllowUserToAddRows = false;
             this.SuppliersDataGrid.AllowUserToDeleteRows = false;
             this.SuppliersDataGrid.AllowUserToOrderColumns = true;
-            this.SuppliersDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SuppliersDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.SuppliersDataGrid.BackgroundColor = System.Drawing.Color.Beige;
             this.SuppliersDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.SuppliersDataGrid.GridColor = System.Drawing.Color.Goldenrod;
@@ -171,16 +180,20 @@ namespace CovidApp
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(820, 37);
+            this.label1.Font = new System.Drawing.Font("Arial", 9F);
+            this.label1.ForeColor = System.Drawing.Color.Orange;
+            this.label1.Location = new System.Drawing.Point(619, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 17);
+            this.label1.Size = new System.Drawing.Size(95, 17);
             this.label1.TabIndex = 19;
-            this.label1.Text = "Select State";
+            this.label1.Text = "Select State :";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // HospitalView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1339, 687);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
@@ -190,7 +203,7 @@ namespace CovidApp
             this.Controls.Add(this.splitter1);
             this.Name = "HospitalView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "HospitalView";
+            this.Text = "Oxygen Suppliers Database";
             this.Load += new System.EventHandler(this.HospitalView_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SuppliersDataGrid)).EndInit();

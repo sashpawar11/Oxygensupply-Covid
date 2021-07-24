@@ -60,10 +60,10 @@
             // 
             this.hosp_name.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.hosp_name.BackColor = System.Drawing.Color.Ivory;
+            this.hosp_name.BackColor = System.Drawing.SystemColors.Control;
             this.hosp_name.Font = new System.Drawing.Font("Arial", 8.5F);
-            this.hosp_name.ForeColor = System.Drawing.Color.Orange;
-            this.hosp_name.Location = new System.Drawing.Point(798, 211);
+            this.hosp_name.ForeColor = System.Drawing.Color.DarkOrange;
+            this.hosp_name.Location = new System.Drawing.Point(798, 212);
             this.hosp_name.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.hosp_name.Name = "hosp_name";
             this.hosp_name.Size = new System.Drawing.Size(239, 24);
@@ -100,9 +100,9 @@
             // 
             this.password.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.password.BackColor = System.Drawing.Color.Ivory;
+            this.password.BackColor = System.Drawing.SystemColors.Control;
             this.password.Font = new System.Drawing.Font("Arial", 8.5F);
-            this.password.ForeColor = System.Drawing.Color.Orange;
+            this.password.ForeColor = System.Drawing.Color.DarkOrange;
             this.password.Location = new System.Drawing.Point(798, 277);
             this.password.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.password.Name = "password";

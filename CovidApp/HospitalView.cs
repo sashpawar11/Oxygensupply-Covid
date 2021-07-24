@@ -533,5 +533,10 @@ namespace CovidApp
             dg.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(227, 185, 32);
             dg.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 9);
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
