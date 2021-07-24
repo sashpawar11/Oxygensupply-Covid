@@ -1,5 +1,5 @@
 # Oxygen Suppliers Database App 
-![Screenshot](screenshot.png)
+![alt text](https://github.com/sashpawar11/Oxygensupply-Covid/blob/master/screenshot.jpg?raw=true)
 ##### An easy and efficient method for hospitals to find oxygen cylinders quickly espicially in the current pandemic situation.
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
